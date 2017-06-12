@@ -6,7 +6,7 @@ curl "${API}${URL_PATH}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=$TOKEN" \
+  --header "Authorization: Token token=$TOKEN"
   --data '{
       "recipe": {
         "name":  "Chicken Soup",
@@ -24,3 +24,4 @@ curl "${API}${URL_PATH}" \
   #       "location": "",
   #       "comment": ""
   #     }
+  # }'
