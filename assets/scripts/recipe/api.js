@@ -19,7 +19,7 @@ const index = function () {
 
 const show = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/recipes/' + store.id,
+    url: config.apiOrigin + '/recipes/' + data,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.token
@@ -31,9 +31,9 @@ const show = function (data) {
   })
 }
 
-const update = function (data) {
+const update = function (data, id) {
   return $.ajax({
-    url: config.apiOrigin + '/recipes/' + store.recipe.id,
+    url: config.apiOrigin + '/recipes/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.token
@@ -61,9 +61,23 @@ const create = function (data) {
   })
 }
 
+const destroy = function (recipeID) {
+  return $.ajax({
+    url: config.apiOrigin + '/recipes/' + recipeID,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.token
+    }
+  })
+    .then((response) => {
+      console.log(response)
+    })
+}
+
 module.exports = {
   index,
   show,
   update,
-  create
+  create,
+  destroy
 }

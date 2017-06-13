@@ -1,9 +1,11 @@
 {{#each recipes as |recipe|}}
 
   <tr data-id="{{recipe.id}}">
-    <td>{{recipe.name}}</td>
-    <td>{{recipe.location}}</td>
-    <td>{{recipe.comment}}</td>
+    <td data-id="{{recipe.id}}"><button id="editRecipe{{recipe.id}}" class="btn btn-default editRecipe" data-toggle="modal" data-target="#updateRecipe">Edit</button></td>
+    <td data-id="{{recipe.id}}"><button id="deleteRecipe{{recipe.id}}" class="btn btn-default deleteRecipe">Delete</button></td>
+    <td class='rname' name="[recipe][name]">{{recipe.name}}</td>
+    <td class='rlocation' name="[recipe][location]">{{recipe.location}}</td>
+    <td class='rcomment' name="[recipe][comment]">{{recipe.comment}}</td>
   </tr>
 
 {{/each}}

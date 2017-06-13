@@ -3,7 +3,7 @@
 const config = {
   apiOrigins: {
     development: 'http://localhost:4741',
-    production: 'https://tbd.herokuapp.com'
+    production: 'https://hidden-sea-76731.herokuapp.com'
   }
 }
 
