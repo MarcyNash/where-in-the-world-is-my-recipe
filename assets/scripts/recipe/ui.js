@@ -7,54 +7,65 @@ const recipeEngine = require('../store')
 const onGetRecipesSuccess = () => {
   console.log('onGetRecipesSuccess')
   $('.recipe-rows').empty()
-  $('#recipes-table').show()
+
   const showRecipesHtml = showRecipesTemplate({ recipes: recipeEngine.recipes })
   $('.recipe-rows').append(showRecipesHtml)
-  // Add an event listener for each edit and delete button
-  // recipeEngine.addEditAndDeleteHandlers(recipeEngine.recipes)
+  $('#welcome-pg').hide(500)
+  $('#recipes-table').show(500)
 }
 
 const onGetRecipesFailure = (error) => {
   console.log('onGetRecipesFailure')
   console.log(error.status + ' - ' + error.statusText)
   // $('#notifications').text('Unable to get the requested Recipes. Cannot calculate statistics.')
+  $('div#statusBar').text('Get recipes failed. Status = ' + error.status + ' ' + error.statusText)
+  $('div#statusBar').show(3000)
+  $('div#statusBar').hide(5000)
 }
 
 const onGetRecipeSuccess = (response) => {
-  // $('#notifications').text('Got the requested Recipe.')
-  console.log('onGetRecipesFailure')
+
 }
 
-const onGetRecipeFailure = (response) => {
+const onGetRecipeFailure = (error) => {
   console.log('onGetRecipeSuccess')
   // $('#notifications').text('Unable to get the requested Recipe.')
+  $('div#statusBar').text('Get recipe failed. Status = ' + error.status + ' ' + error.statusText)
+  $('div#statusBar').show(3000)
+  $('div#statusBar').hide(5000)
 }
 
 const onUpdateRecipeSuccess = (response) => {
   console.log('onUpdateRecipeSuccess')
-  $('#show-my-recipes-btn').click()
+  // $('#show-my-recipes-btn').click()
   $('#update-recipe-close').click()
+  $('#show-my-recipes-btn').click()
 }
 
-const onUpdateRecipeFailure = (response) => {
+const onUpdateRecipeFailure = (error) => {
   console.log('onUpdateRecipeFailure')
-  // $('#notifications').text('Unable to update the Recipe.')
+  $('div#statusBar').text('Edit recipe failed. Status = ' + error.status + ' ' + error.statusText)
+  $('div#statusBar').show(3000)
+  $('div#statusBar').hide(5000)
 }
 
 const onCreateRecipeSuccess = () => {
   console.log('onCreateRecipeSuccess')
+  $('#add-recipe-close').click()
   const recipeToArray = []
   recipeToArray.push(recipeEngine.recipe)
-  $('#recipes-table').show()  // ??? should really check if hidden
   const showRecipesHtml = showRecipesTemplate({ recipes: recipeToArray })
   $('.recipe-rows').append(showRecipesHtml)
-  // $('#notifications').text('Created the Tic Tac Toe Recipe. Start playing!')
-  $('#add-recipe-close').click()
+  $('#show-my-recipes-btn').click()
+  // $('#welcome-pg').hide(200)
+  // $('#recipes-table').show(200)
 }
 
-const onCreateRecipeFailure = (response) => {
+const onCreateRecipeFailure = (error) => {
   console.log('onCreateRecipeFailure')
-  // $('#notifications').text('Unable to create the Recipe.')
+  $('div#statusBar').text('Add recipe failed. Status = ' + error.status + ' ' + error.statusText)
+  $('div#statusBar').show(3000)
+  $('div#statusBar').hide(5000)
 }
 
 const onDestroyRecipeSuccess = () => {
@@ -63,9 +74,11 @@ const onDestroyRecipeSuccess = () => {
   // $('#notifications').text('Created the Tic Tac Toe Recipe. Start playing!')
 }
 
-const onDestroyRecipeFailure = (response) => {
+const onDestroyRecipeFailure = (error) => {
   console.log('onDestroyRecipeFailure')
-  // $('#notifications').text('Unable to create the Recipe.')
+  $('div#statusBar').text('Delete recipe failed. Status = ' + error.status + ' ' + error.statusText)
+  $('div#statusBar').show(3000)
+  $('div#statusBar').hide(5000)
 }
 
 module.exports = {

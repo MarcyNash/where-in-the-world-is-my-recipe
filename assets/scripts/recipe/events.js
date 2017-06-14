@@ -31,10 +31,11 @@ const onShowUpdateForm = function (event) {
 
   const form = $('#update-recipe')
   form.find('.modal-title').text('Update Recipe')
-  form.find('.rname').val(name)
-  form.find('.location').val(location)
-  form.find('.comment').val(comment)
-  form.find('.rid').val(recipeID)
+  form.find('.urname').val(name)
+  form.find('.urlocation').val(location)
+  form.find('.urcomment').val(comment)
+  form.find('.urid').val(recipeID)
+  form.find('.urid').hide()
 
   // $('.modal-body.recipeID').val(recipeID)
 }
@@ -42,7 +43,7 @@ const onShowUpdateForm = function (event) {
 const onUpdateRecipe = function (event) {
   event.preventDefault()
   const form = $('#update-recipe')
-  const recipeID = form.find('.rid').val()
+  const recipeID = form.find('.urid').val()
   const data = getFormFields(event.target)
   api.update(data, recipeID)
   .then((response) => {
