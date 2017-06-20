@@ -12,7 +12,6 @@ const index = function () {
     }
   })
   .then((response) => {
-    console.log(response)
     store.recipes = response.recipes
   })
 }
@@ -26,7 +25,6 @@ const show = function (data) {
     }
   })
   .then((response) => {
-    console.log(response)
     store.recipe = response.recipe
   })
 }
@@ -41,7 +39,6 @@ const update = function (data, id) {
     data
   })
   .then((response) => {
-    console.log(response)
     store.recipe = response.recipe
   })
 }
@@ -56,7 +53,6 @@ const create = function (data) {
     data
   })
   .then((response) => {
-    console.log(response)
     store.recipe = response.recipe
   })
 }
@@ -70,7 +66,7 @@ const destroy = function (recipeID) {
     }
   })
     .then((response) => {
-      console.log(response)
+      // console.log(response)
     })
 }
 
