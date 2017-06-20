@@ -19,7 +19,6 @@ const signIn = function (data) {
     data
   })
     .then((response) => {
-      console.log(response)
       store.id = response.user.id
       store.email = response.user.email
       store.token = response.user.token

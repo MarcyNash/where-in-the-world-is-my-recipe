@@ -21,7 +21,6 @@ const onGetRecipe = function (event) {
 }
 
 const onShowUpdateForm = function (event) {
-  console.log('onShowUpdateForm')
   const recipeID = event.relatedTarget.parentNode.getAttribute('data-id')
 
   const currentRow = $(event.relatedTarget).closest('tr')
@@ -47,8 +46,8 @@ const onUpdateRecipe = function (event) {
   const data = getFormFields(event.target)
   api.update(data, recipeID)
   .then((response) => {
-    console.log('onUpdateRecipe')
-    console.log(response)
+    // console.log('onUpdateRecipe')
+    // console.log(response)
   })
   .then(ui.onUpdateRecipeSuccess)
   .catch(ui.onUpdateRecipeFailure)
