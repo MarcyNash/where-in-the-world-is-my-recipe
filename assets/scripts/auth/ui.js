@@ -1,16 +1,20 @@
 'use strict'
 
+const store = require('../store')
+
 const signUpSuccess = (data) => {
   // please do not leave this in your production application
   // instead, you probably want to manipulate the DOM,
   // for example, put up default view
   $('#sign-up-close').click()
+  $('#sign-up').trigger('reset')
   // $('#sign-up-btn').prop('disabled', true)
   // $('#notifications').text('Sign Up succeeded. Please log in to play Tic-Tac-Toe.')
 }
 
 const signUpFailure = (error) => {
   $('#sign-up-close').click()
+  $('#sign-up').trigger('reset')
   $('#sign-up-btn').prop('disabled', false)  // ??? this button automatically disabled after failure
   $('div#statusBar').text('Sign Up failed. Status = ' + error.status + ' ' + error.statusText)
   $('div#statusBar').show(3000)
@@ -19,6 +23,7 @@ const signUpFailure = (error) => {
 
 const signInSuccess = (data) => {
   $('#sign-in-close').click()   // close sign-in modal dlg
+  $('#sign-in').trigger('reset')
 
   $('#show-my-recipes-btn').prop('disabled', false)
   $('#add-recipe-btn').prop('disabled', false)
@@ -30,6 +35,7 @@ const signInSuccess = (data) => {
 
 const signInFailure = () => {
   $('#sign-in-close').click()   // close sign-in modal dlg
+  $('#sign-in').trigger('reset')
   $('#sign-up-btn').prop('disabled', false)
   $('div#statusBar').text('Sign In failed. Please check that your email and password are correct.')
   $('div#statusBar').show(3000)
@@ -42,11 +48,13 @@ const changePasswordSuccess = (data) => {
   // for example, put up default view
   // $('#notifications').text('Password changed.')
   $('#change-password-close').click()
+  $('#change-password').trigger('reset')
 }
 
 const changePasswordFailure = (error) => {
   // tell user there is an error
   $('#change-password-close').click()
+  $('#change-password').trigger('reset')
   $('div#statusBar').text('Change Password failed. Status = ' + error.status + ' ' + error.statusText)
   $('div#statusBar').show(3000)
   $('div#statusBar').hide(5000)
