@@ -9,7 +9,7 @@
 
 ## For Where In The World Is My Recipe I built both the frontend client app and a backend server.
 
-## Technology the client uses
+## Technology on the client uses
 
 - HTML
 - CSS and SASS
